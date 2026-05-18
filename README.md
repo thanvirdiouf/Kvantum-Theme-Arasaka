@@ -12,4 +12,4 @@ git clone --depth 1 https://github.com/thanvirdiouf/Kvantum-Theme-Arasaka/ ~/.co
 2.   Open kvantum manager(install using package manager).
 3.   Click on `Change/Delete Theme` and select `Arasaka`
 ## LICENSE
-UNLICENSE
+CC0 1.0
