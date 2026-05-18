@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     width="500" height="2000">
+  <defs>
+    <!-- Scanline pattern for terminal feel -->
+    <pattern id="scanlines" x="0" y="0" width="2" height="2" patternUnits="userSpaceOnUse">
+      <rect width="2" height="1" fill="#000000" opacity="0.18"/>
+      <rect y="1" width="2" height="1" fill="transparent"/>
+    </pattern>
+
+    <!-- Red glow filter -->
+    <filter id="red-glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feFlood flood-color="#cc0000" flood-opacity="0.6" result="color"/>
+      <feComposite in="color" in2="blur" operator="in" result="glow"/>
+      <feMerge><feMergeNode in="glow"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+
+    <!-- Cyan glow filter -->
+    <filter id="cyan-glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feFlood flood-color="#00ffcc" flood-opacity="0.5" result="color"/>
+      <feComposite in="color" in2="blur" operator="in" result="glow"/>
+      <feMerge><feMergeNode in="glow"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- ============================================================
+       PUSH BUTTON — normal
+  ============================================================ -->
+  <g id="pushbutton-normal">
+    <rect x="1" y="1" width="498" height="48" fill="#1a0000"/>
+    <rect x="1" y="1" width="498" height="48" fill="url(#scanlines)"/>
+    <!-- top-left corner mark (Arasaka corp style) -->
+    <polyline points="1,12 1,1 12,1" fill="none" stroke="#8b0000" stroke-width="1.5"/>
+    <polyline points="487,1 498,1 498,12" fill="none" stroke="#8b0000" stroke-width="1.5"/>
+    <polyline points="1,37 1,48 12,48" fill="none" stroke="#8b0000" stroke-width="1.5"/>
+    <polyline points="487,48 498,48 498,37" fill="none" stroke="#8b0000" stroke-width="1.5"/>
+  </g>
+
+  <!-- PUSH BUTTON — focused -->
+  <g id="pushbutton-focused">
+    <rect x="1" y="1" width="498" height="48" fill="#220000"/>
+    <rect x="1" y="1" width="498" height="48" fill="url(#scanlines)"/>
+    <polyline points="1,12 1,1 12,1" fill="none" stroke="#cc0000" stroke-width="2"/>
+    <polyline points="487,1 498,1 498,12" fill="none" stroke="#cc0000" stroke-width="2"/>
+    <polyline points="1,37 1,48 12,48" fill="none" stroke="#cc0000" stroke-width="2"/>
+    <polyline points="487,48 498,48 498,37" fill="none" stroke="#cc0000" stroke-width="2"/>
+    <!-- center accent line -->
+    <line x1="1" y1="25" x2="30" y2="25" stroke="#cc0000" stroke-width="1" opacity="0.5"/>
+    <line x1="468" y1="25" x2="498" y2="25" stroke="#cc0000" stroke-width="1" opacity="0.5"/>
+  </g>
+
+  <!-- PUSH BUTTON — pressed -->
+  <g id="pushbutton-pressed">
+    <rect x="1" y="1" width="498" height="48" fill="#330000"/>
+    <rect x="1" y="1" width="498" height="48" fill="url(#scanlines)"/>
+    <rect x="1" y="1" width="498" height="48" fill="#cc0000" opacity="0.08"/>
+    <polyline points="1,12 1,1 12,1" fill="none" stroke="#ff1a1a" stroke-width="2" filter="url(#red-glow)"/>
+    <polyline points="487,1 498,1 498,12" fill="none" stroke="#ff1a1a" stroke-width="2" filter="url(#red-glow)"/>
+    <polyline points="1,37 1,48 12,48" fill="none" stroke="#ff1a1a" stroke-width="2" filter="url(#red-glow)"/>
+    <polyline points="487,48 498,48 498,37" fill="none" stroke="#ff1a1a" stroke-width="2" filter="url(#red-glow)"/>
+  </g>
+
+  <!-- PUSH BUTTON — toggled (same as pressed) -->
+  <g id="pushbutton-toggled">
+    <use xlink:href="#pushbutton-pressed"/>
+  </g>
+
+  <!-- ============================================================
+       TOOLBAR
+  ============================================================ -->
+  <g id="toolbar">
+    <rect x="0" y="0" width="500" height="50" fill="#0d0000"/>
+    <line x1="0" y1="49" x2="500" y2="49" stroke="#8b0000" stroke-width="1"/>
+    <rect x="0" y="0" width="500" height="50" fill="url(#scanlines)"/>
+  </g>
+
+  <!-- TOOLBAR BUTTON — normal -->
+  <g id="toolbarbutton-normal">
+    <rect x="1" y="1" width="498" height="48" fill="transparent"/>
+  </g>
+
+  <!-- TOOLBAR BUTTON — focused/hover -->
+  <g id="toolbarbutton-focused">
+    <rect x="1" y="1" width="498" height="48" fill="#1a0000"/>
+    <rect x="1" y="1" width="498" height="48" fill="url(#scanlines)"/>
+    <line x1="1" y1="48" x2="498" y2="48" stroke="#cc0000" stroke-width="1.5"/>
+  </g>
+
+  <!-- TOOLBAR BUTTON — pressed -->
+  <g id="toolbarbutton-pressed">
+    <rect x="1" y="1" width="498" height="48" fill="#220000"/>
+    <rect x="1" y="1" width="498" height="48" fill="url(#scanlines)"/>
+    <line x1="1" y1="48" x2="498" y2="48" stroke="#ff1a1a" stroke-width="2"/>
+    <line x1="1" y1="1" x2="498" y2="1" stroke="#ff1a1a" stroke-width="1" opacity="0.4"/>
+  </g>
+
+  <!-- ============================================================
+       MENU
+  ============================================================ -->
+  <g id="menu">
+    <rect x="0" y="0" width="500" height="500" fill="#0e0e0e"/>
+    <rect x="0" y="0" width="500" height="500" fill="url(#scanlines)"/>
+    <!-- border -->
+    <rect x="0" y="0" width="500" height="500" fill="none" stroke="#8b0000" stroke-width="1"/>
+    <!-- top accent line -->
+    <line x1="0" y1="0" x2="500" y2="0" stroke="#cc0000" stroke-width="2"/>
+  </g>
+
+  <!-- MENU ITEM — normal -->
+  <g id="menuitem-normal">
+    <rect x="0" y="0" width="500" height="32" fill="transparent"/>
+  </g>
+
+  <!-- MENU ITEM — selected -->
+  <g id="menuitem-selected">
+    <rect x="0" y="0" width="500" height="32" fill="#1a0000"/>
+    <rect x="0" y="0" width="500" height="32" fill="url(#scanlines)"/>
+    <line x1="0" y1="0" x2="500" y2="0" stroke="#8b0000" stroke-width="1"/>
+    <line x1="0" y1="31" x2="500" y2="31" stroke="#8b0000" stroke-width="1"/>
+    <!-- left indicator bar -->
+    <rect x="0" y="0" width="3" height="32" fill="#cc0000"/>
+  </g>
+
+  <!-- ============================================================
+       INPUT FIELD (line edit, combo box)
+  ============================================================ -->
+  <g id="lineedit-normal">
+    <rect x="1" y="1" width="498" height="38" fill="#0a0a0a"/>
+    <rect x="1" y="1" width="498" height="38" fill="url(#scanlines)"/>
+    <rect x="1" y="1" width="498" height="38" fill="none" stroke="#3a0000" stroke-width="1"/>
+    <!-- bottom underline -->
+    <line x1="1" y1="38" x2="498" y2="38" stroke="#8b0000" stroke-width="1.5"/>
+  </g>
+
+  <g id="lineedit-focused">
+    <rect x="1" y="1" width="498" height="38" fill="#0f0000"/>
+    <rect x="1" y="1" width="498" height="38" fill="url(#scanlines)"/>
+    <rect x="1" y="1" width="498" height="38" fill="none" stroke="#cc0000" stroke-width="1"/>
+    <line x1="1" y1="38" x2="498" y2="38" stroke="#00ffcc" stroke-width="2" filter="url(#cyan-glow)"/>
+  </g>
+
+  <!-- ============================================================
+       SCROLLBAR
+  ============================================================ -->
+  <g id="vscrollbar-groove">
+    <rect x="3" y="0" width="4" height="500" fill="#111111"/>
+    <rect x="3" y="0" width="4" height="500" fill="none" stroke="#1a0000" stroke-width="1"/>
+  </g>
+
+  <!-- was #8b0000 -->
+  <g id="vscrollbar-slider-normal">
+    <rect x="2" y="1" width="6" height="498" fill="#c0392b" rx="1"/>
+  </g>
+
+  <!-- was #cc0000 -->
+  <g id="vscrollbar-slider-focused">
+    <rect x="2" y="1" width="6" height="498" fill="#e74c3c" rx="1"/>
+  </g>
+
+  <!-- was #ff1a1a -->
+  <g id="vscrollbar-slider-pressed">
+    <rect x="1" y="1" width="8" height="498" fill="#ff6b6b" rx="1" filter="url(#red-glow)"/>
+  </g>
+
+  <g id="hscrollbar-groove">
+    <rect x="0" y="3" width="500" height="4" fill="#111111"/>
+    <rect x="0" y="3" width="500" height="4" fill="none" stroke="#1a0000" stroke-width="1"/>
+  </g>
+
+  <g id="hscrollbar-slider-normal">
+    <rect x="1" y="2" width="498" height="6" fill="#c0392b" rx="1"/>
+  </g>
+
+  <g id="hscrollbar-slider-focused">
+    <rect x="1" y="2" width="498" height="6" fill="#e74c3c" rx="1"/>
+  </g>
+
+  <g id="hscrollbar-slider-pressed">
+    <rect x="1" y="1" width="498" height="8" fill="#ff6b6b" rx="1" filter="url(#red-glow)"/>
+  </g>
+
+  <!-- ============================================================
+       PROGRESS BAR
+  ============================================================ -->
+  <g id="progressbar">
+    <rect x="0" y="6" width="500" height="8" fill="#111111"/>
+    <rect x="0" y="6" width="500" height="8" fill="none" stroke="#3a0000" stroke-width="1"/>
+  </g>
+
+  <g id="progressbar-contents">
+    <rect x="0" y="6" width="500" height="8" fill="#cc0000"/>
+    <rect x="0" y="6" width="500" height="8" fill="url(#scanlines)"/>
+    <!-- cyan leading edge -->
+    <line x1="498" y1="6" x2="498" y2="14" stroke="#00ffcc" stroke-width="2" filter="url(#cyan-glow)"/>
+  </g>
+
+  <!-- ============================================================
+       TAB BAR
+  ============================================================ -->
+  <g id="tab-normal">
+    <rect x="1" y="1" width="498" height="38" fill="#0d0000"/>
+    <rect x="1" y="1" width="498" height="38" fill="url(#scanlines)"/>
+    <line x1="1" y1="38" x2="498" y2="38" stroke="#3a0000" stroke-width="1"/>
+  </g>
+
+  <g id="tab-focused">
+    <rect x="1" y="1" width="498" height="38" fill="#1a0000"/>
+    <rect x="1" y="1" width="498" height="38" fill="url(#scanlines)"/>
+    <line x1="1" y1="0" x2="498" y2="0" stroke="#cc0000" stroke-width="2"/>
+    <line x1="1" y1="38" x2="498" y2="38" stroke="#0a0a0a" stroke-width="1"/>
+  </g>
+
+  <!-- ============================================================
+       TOOLTIP
+  ============================================================ -->
+  <g id="tooltip">
+    <rect x="0" y="0" width="500" height="100" fill="#0a0a0a"/>
+    <rect x="0" y="0" width="500" height="100" fill="url(#scanlines)"/>
+    <rect x="0" y="0" width="500" height="100" fill="none" stroke="#00ffcc" stroke-width="1" filter="url(#cyan-glow)"/>
+    <line x1="0" y1="0" x2="500" y2="0" stroke="#00ffcc" stroke-width="1.5"/>
+  </g>
+
+  <!-- ============================================================
+       WINDOW / PANEL FRAME
+  ============================================================ -->
+  <g id="window">
+    <rect x="0" y="0" width="500" height="500" fill="#0a0a0a"/>
+    <rect x="0" y="0" width="500" height="500" fill="url(#scanlines)" opacity="0.5"/>
+  </g>
+
+  <g id="panelframe">
+    <rect x="0" y="0" width="500" height="500" fill="#111111"/>
+    <rect x="0" y="0" width="500" height="500" fill="none" stroke="#1a0000" stroke-width="1"/>
+  </g>
+
+  <!-- ============================================================
+       SELECTION / HIGHLIGHT
+  ============================================================ -->
+  <g id="itemview-item-selected">
+    <rect x="0" y="0" width="500" height="32" fill="#1a0000"/>
+    <rect x="0" y="0" width="500" height="32" fill="url(#scanlines)"/>
+    <line x1="0" y1="0" x2="500" y2="0" stroke="#8b0000" stroke-width="1"/>
+    <line x1="0" y1="31" x2="500" y2="31" stroke="#8b0000" stroke-width="1"/>
+    <rect x="0" y="0" width="2" height="32" fill="#cc0000"/>
+  </g>
+
+  <g id="itemview-item-focused">
+    <rect x="0" y="0" width="500" height="32" fill="#220000"/>
+    <rect x="0" y="0" width="500" height="32" fill="url(#scanlines)"/>
+    <rect x="0" y="0" width="500" height="32" fill="none" stroke="#cc0000" stroke-width="1"/>
+    <rect x="0" y="0" width="2" height="32" fill="#ff1a1a"/>
+  </g>
+
+  <!-- ============================================================
+       CHECKBOX
+  ============================================================ -->
+  <g id="checkbox-normal">
+    <rect x="3" y="3" width="18" height="18" fill="#0a0a0a"/>
+    <rect x="3" y="3" width="18" height="18" fill="none" stroke="#8b0000" stroke-width="1.5"/>
+  </g>
+
+  <g id="checkbox-focused">
+    <rect x="3" y="3" width="18" height="18" fill="#0f0000"/>
+    <rect x="3" y="3" width="18" height="18" fill="none" stroke="#cc0000" stroke-width="1.5"/>
+  </g>
+
+  <g id="checkbox-checked">
+    <rect x="3" y="3" width="18" height="18" fill="#1a0000"/>
+    <rect x="3" y="3" width="18" height="18" fill="none" stroke="#cc0000" stroke-width="1.5"/>
+    <!-- checkmark in cyan -->
+    <polyline points="6,12 10,16 18,7" fill="none" stroke="#00ffcc" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round" filter="url(#cyan-glow)"/>
+  </g>
+
+  <!-- ============================================================
+       RADIO BUTTON
+  ============================================================ -->
+  <g id="radiobutton-normal">
+    <circle cx="12" cy="12" r="9" fill="#0a0a0a" stroke="#8b0000" stroke-width="1.5"/>
+  </g>
+
+  <g id="radiobutton-checked">
+    <circle cx="12" cy="12" r="9" fill="#0f0000" stroke="#cc0000" stroke-width="1.5"/>
+    <circle cx="12" cy="12" r="4" fill="#00ffcc" filter="url(#cyan-glow)"/>
+  </g>
+
+  <!-- ============================================================
+       SPIN BOX BUTTONS
+  ============================================================ -->
+  <g id="spinbox-up-normal">
+    <rect x="1" y="1" width="22" height="18" fill="#1a0000"/>
+    <rect x="1" y="1" width="22" height="18" fill="none" stroke="#3a0000" stroke-width="1"/>
+    <polyline points="7,13 12,7 17,13" fill="none" stroke="#cc0000" stroke-width="1.5"/>
+  </g>
+
+  <g id="spinbox-down-normal">
+    <rect x="1" y="1" width="22" height="18" fill="#1a0000"/>
+    <rect x="1" y="1" width="22" height="18" fill="none" stroke="#3a0000" stroke-width="1"/>
+    <polyline points="7,7 12,13 17,7" fill="none" stroke="#cc0000" stroke-width="1.5"/>
+  </g>
+
+  <!-- ============================================================
+       SEPARATOR
+  ============================================================ -->
+  <g id="hseparator">
+    <line x1="0" y1="3" x2="500" y2="3" stroke="#8b0000" stroke-width="1" opacity="0.6"/>
+    <line x1="0" y1="4" x2="500" y2="4" stroke="#1a0000" stroke-width="1"/>
+  </g>
+
+  <g id="vseparator">
+    <line x1="3" y1="0" x2="3" y2="500" stroke="#8b0000" stroke-width="1" opacity="0.6"/>
+    <line x1="4" y1="0" x2="4" y2="500" stroke="#1a0000" stroke-width="1"/>
+  </g>
+
+</svg>
